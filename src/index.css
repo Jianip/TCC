@@ -1,1 +1,89 @@
 @import "tailwindcss";
+
+.modo-escuro main {
+  background-color: #111827 !important;
+  color: #f3f4f6 !important;
+}
+
+.modo-escuro .bg-white,
+.modo-escuro .bg-slate-50,
+.modo-escuro .bg-slate-100 {
+  background-color: #112642 !important;
+}
+
+.modo-escuro .text-black,
+.modo-escuro .text-slate-900,
+.modo-escuro .text-slate-700,
+.modo-escuro .text-\[\#172033\] {
+  color: #f8fafc !important;
+}
+
+.modo-escuro .text-slate-600 {
+  color: #d1d5db !important;
+}
+
+.modo-escuro .text-slate-500 {
+  color: #9ca3af !important;
+}
+
+.modo-escuro .text-blue-600,
+.modo-escuro .text-blue-700,
+.modo-escuro .text-\[\#1554ad\] {
+  color: #93c5fd !important;
+}
+
+.modo-escuro .border-slate-100,
+.modo-escuro .border-slate-200,
+.modo-escuro .border-slate-300,
+.modo-escuro .border-blue-100,
+.modo-escuro .border-\[\#dbe3ef\] {
+  border-color: #374151 !important;
+}
+
+.modo-escuro input,
+.modo-escuro select,
+.modo-escuro textarea {
+  border-color: #4b5563 !important;
+  background-color: #111827 !important;
+  color: #f8fafc !important;
+}
+
+.modo-escuro input::placeholder,
+.modo-escuro textarea::placeholder {
+  color: #6b7280;
+}
+
+.modo-escuro nav {
+  border-bottom: 1px solid #374151;
+  background-color: #021436 !important;
+}
+
+.modo-escuro footer {
+  background-color: #0e033a !important;
+}
+
+.modo-escuro .shadow-sm,
+.modo-escuro .shadow-md,
+.modo-escuro .shadow-lg,
+.modo-escuro .shadow-xl,
+.modo-escuro [class*="shadow-"] {
+  box-shadow: 0 8px 24px rgb(0 0 0 / 28%) !important;
+}
+
+.modo-escuro .botao-tema {
+  border: 1px solid #4b5563;
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.modo-escuro main,
+.modo-escuro .bg-white,
+.modo-escuro .bg-slate-50,
+.modo-escuro input,
+.modo-escuro select,
+.modo-escuro textarea {
+  transition:
+    background-color 0.25s,
+    color 0.25s,
+    border-color 0.25s;
+}
