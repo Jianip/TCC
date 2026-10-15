@@ -13,6 +13,8 @@ import Configuracoes from "./paginas/configuracoes";
 import { autenticar, type Usuario } from "./dados/autenticacao";
 import { definirUsuarioPerfil } from "./dados/perfil";
 
+import { modoDemonstracao, usuarioDemonstracao } from "./dados/demonstracao";
+
 import Login from "./paginas/login";
 
 export default function App() {
@@ -24,6 +26,13 @@ export default function App() {
   async function verificarSessao() {
     setCarregando(true);
     setErroSessao("");
+    if (modoDemonstracao) {
+      definirUsuarioPerfil(usuarioDemonstracao);
+      setUsuario(usuarioDemonstracao);
+      setCarregando(false);
+      return;
+    }
+
     try {
       const atual = await autenticar("session");
       definirUsuarioPerfil(atual);
@@ -45,7 +54,9 @@ export default function App() {
 
   async function sair() {
     try {
-      await autenticar("logout");
+      if (!modoDemonstracao) {
+        await autenticar("logout");
+      }
       definirUsuarioPerfil(null);
       setUsuario(null);
       navegar("/login", { replace: true });
@@ -80,7 +91,10 @@ export default function App() {
     <div className={modoEscuro ? "modo-escuro" : ""}>
       <Routes>
         <Route path="/" element={<Inicio />} />
-        <Route path="/login" element={<Navigate to="/" replace />} />
+        <Route
+          path="/login"
+          element={modoDemonstracao ? <Login entrar={entrar} /> : <Navigate to="/" replace />}
+        />
         <Route path="/horarios" element={<Horarios />} />
         <Route path="/eventos" element={<Eventos />} />
         <Route path="/clubes" element={<Clubes />} />

@@ -1,5 +1,7 @@
 import { useState, type FormEvent } from "react";
 
+import { modoDemonstracao, usuarioDemonstracao } from "../dados/demonstracao";
+
 import { autenticar, type Usuario } from "../dados/autenticacao";
 
 export default function Login({ entrar }: { entrar: (usuario: Usuario) => void }) {
@@ -17,6 +19,11 @@ export default function Login({ entrar }: { entrar: (usuario: Usuario) => void }
 
   async function enviarFormulario(evento: FormEvent<HTMLFormElement>) {
     evento.preventDefault();
+
+    if (modoDemonstracao) {
+      setMensagem("Login e cadastro indisponíveis nesta demonstração. Use o botão para conhecer o portal.");
+      return;
+    }
 
     if (enviando) {
       return;
@@ -135,6 +142,22 @@ export default function Login({ entrar }: { entrar: (usuario: Usuario) => void }
           >Criar conta</button>
 
         </div>
+
+        {modoDemonstracao && (
+          <div className="mb-6 rounded-lg bg-blue-50 p-4 text-center">
+            <p className="text-sm text-blue-900">
+              Versão de demonstração. Explore o portal sem criar uma conta.
+            </p>
+
+            <button
+              type="button"
+              onClick={() => entrar(usuarioDemonstracao)}
+              className="mt-3 rounded-lg bg-blue-800 px-4 py-2 font-bold text-white hover:bg-blue-900"
+            >
+              Conhecer o portal
+            </button>
+          </div>
+        )}
 
         <form
           key={String(criandoConta)}

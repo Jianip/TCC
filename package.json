@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "typecheck": "tsc",
     "server": "node server/auth.mjs",
-    "test:auth": "node --test server/auth.test.mjs"
+    "test:auth": "node --test server/auth.test.mjs",
+    "build:demo": "tsc && vite build --mode demonstracao"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",
